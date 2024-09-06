@@ -1,5 +1,5 @@
 import ProductList from '../components/ProductList';
-import Pagination from '../components/Paginatioin';
+import Pagination from '../components/Pagination';
 
 export default async function Home({ searchParams}) {
   const page = Number(searchParams.page) || 1;
