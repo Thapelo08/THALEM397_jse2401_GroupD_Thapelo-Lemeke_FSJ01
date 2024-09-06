@@ -9,3 +9,11 @@ async function getProduct(id) {
 
     return res.json();
 }
+
+export default async function ProductPage({ params}) {
+    const product = await getProduct(params.id);
+
+    if (!product) {
+        notFound();
+    }
+}
