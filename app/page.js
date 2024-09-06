@@ -16,7 +16,7 @@ export default async function Home({ searchParams}) {
 
   return (
     <main className="conatiner mx-auto px-4">
-      <h1>E-commerce Store</h1>
+      <h1 ClassName="text-3xl font-bold my-8">E-commerce Store</h1>
       <ProductList products={products} />
       <Pagination page={page} />
     </main>
