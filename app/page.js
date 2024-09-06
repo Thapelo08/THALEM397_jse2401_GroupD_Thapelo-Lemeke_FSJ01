@@ -6,11 +6,16 @@ export default async function Home({ searchParams}) {
   const limit = 20;
   const skip = (page - 1) * limit;
 
-  const productsData = await fetch (`https://next-ecommerce-api.vercel.app/products?limit=${limit}&skip=${skip}`, { cache: 'no-store' });
-  const products = await productsData.json();
+  const response = await fetch (`https://next-ecommerce-api.vercel.app/products?limit=${limit}&skip=${skip}`, { cache: 'no-store' });
+  
+  if (!response.ok) {
+    throw new Error('Failed to fetch products');
+  }
+
+  const products = await response.json();
 
   return (
-    <main>
+    <main className="conatiner mx-auto px-4">
       <h1>E-commerce Store</h1>
       <ProductList products={products} />
       <Pagination page={page} />
