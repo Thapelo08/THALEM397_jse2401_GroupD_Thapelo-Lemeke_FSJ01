@@ -3,8 +3,9 @@ import { useState } from 'react';
 
 export default function ProductDetails({ product }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [imageError, setImageError] = useState(false);
 
-     const images = product.images && product.images.length > 0 ? product.images : ['/placeholder-image.jpg'];
+     const images = !imageError && product.images && product.images.length > 0 ? product.images : ['/placeholder-image.jpg'];
 
     const nextImage = () => {
         setCurrentImageIndex((prevIndex) => 
@@ -28,8 +29,9 @@ return (
           alt={product.title}
           fill
           style={{ objectFit: 'contain' }}
+          onError={() => setImageError(true)}
         />
-        {product.images.length > 1 && (
+        {images.length > 1 && (
           <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-4">
             <button onClick={prevImage} className="btn btn-secondary">Previous</button>
             <button onClick={nextImage} className="btn btn-secondary">Next</button>
