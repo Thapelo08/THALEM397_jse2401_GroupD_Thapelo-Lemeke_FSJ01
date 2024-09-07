@@ -1,12 +1,12 @@
-import ProductList from '../components/ProductList';
+import ProductGrid from '../components/ProductGrid';
 import Pagination from '../components/Pagination';
 
-export default async function Home({ searchParams}) {
+export default async function Home({ searchParams }) {
   const page = Number(searchParams.page) || 1;
   const limit = 20;
   const skip = (page - 1) * limit;
 
-  const response = await fetch (`https://next-ecommerce-api.vercel.app/products?limit=${limit}&skip=${skip}`, { cache: 'no-store' });
+  const response = await fetch(`https://next-ecommerce-api.vercel.app/products?limit=${limit}&skip=${skip}`, { cache: 'no-store' });
   
   if (!response.ok) {
     throw new Error('Failed to fetch products');
@@ -15,10 +15,10 @@ export default async function Home({ searchParams}) {
   const products = await response.json();
 
   return (
-    <main className="conatiner mx-auto px-4">
-      <h1 ClassName="text-3xl font-bold my-8">E-commerce Store</h1>
-      <ProductList products={products} />
-      <Pagination page={page} />
-    </main>
+    <div>
+      <h1 className="text-4xl font-bold mb-8 text-center">Discover Our Products</h1>
+      <ProductGrid products={products} />
+      <Pagination currentPage={page} />
+    </div>
   );
 }
