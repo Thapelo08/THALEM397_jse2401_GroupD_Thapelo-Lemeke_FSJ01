@@ -2,11 +2,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function ProductCard({ product }) {
+    const getImageSrc = () => {
+        if (product.thumbnail) return product.thumbnail;
+        if (product.images && product.images.length > 0) return product.images[0];
+        return 'placeholder-image.jpg';
+    }
     return (
         <Link href={`/products/${product.id}`} className="card group">
             <div className="relative h-64 overflow-hidden">
                 <Image 
-                src={product.thunbnail}
+                src={getImageSrc()}
                 alt={product.title}
                 fill style={{ objectFit: 'cover '}}
                 className="group-hover: scale-110 transition-transform duration-300"
