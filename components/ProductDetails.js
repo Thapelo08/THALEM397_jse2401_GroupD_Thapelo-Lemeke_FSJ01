@@ -4,6 +4,8 @@ import { useState } from 'react';
 export default function ProductDetails({ product }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+     const images = product.images && product.images.length > 0 ? product.images : ['/placeholder-image.jpg'];
+
     const nextImage = () => {
         setCurrentImageIndex((prevIndex) => 
         prevIndex === product.images.length - 1 ? 0 : prevIndex + 1 
@@ -22,7 +24,7 @@ return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
       <div className="relative h-96 card">
         <Image 
-          src={product.images[currentImageIndex]} 
+          src={images[currentImageIndex]} 
           alt={product.title}
           fill
           style={{ objectFit: 'contain' }}
