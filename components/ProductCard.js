@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function ProductCard({ product }) {
-    retuen (
+    return (
         <Link href={`/products/${product.id}`} className="card group">
             <div className="relative h-64 overflow-hidden">
                 <Image 
