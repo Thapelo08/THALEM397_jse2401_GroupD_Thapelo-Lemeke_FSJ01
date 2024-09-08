@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -27,8 +28,8 @@ export default function ProductCard({ product }) {
       </div>
       <div className="p-4">
         <h2 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors duration-200">{product.title}</h2>
-        <p className="text-accent font-bold mb-2">${product.price.toFixed(2)}</p>
-        <p className="text-sm text-secondary">{product.category}</p>
+        <p className="text-accent font-bold mb-2">${(product.price || 0).toFixed(2)}</p>
+        <p className="text-sm text-secondary">{product.category || 'uncategorized'}</p>
       </div>
     </Link>
   );
