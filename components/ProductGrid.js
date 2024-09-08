@@ -1,7 +1,7 @@
 import ProductCard from './ProductCard';
 
 export default function ProductGrid({ products }) {
-  if (!products || products.length === 0) {
+  if (!Array.isArray(products) || products.length === 0) {
     return <p>No products available.</p>;
   }
 
