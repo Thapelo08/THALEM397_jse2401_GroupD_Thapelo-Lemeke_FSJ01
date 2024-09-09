@@ -11,7 +11,7 @@ export default function ProductCard({ product }) {
   const getImageSrc = () => {
     if (!imageError && product.thumbnail) return product.thumbnail;
     if (!imageError && product.images && product.images.length > 0) return product.images[0];
-    return '/placeholder-image.jpg'; // Make sure to add a placeholder image to your public folder
+    return '/placeholder-image.jpg'; 
   };
 
   return (
