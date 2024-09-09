@@ -9,7 +9,7 @@ export default async function Home({ searchParams }) {
   const response = await fetch(`https://next-ecommerce-api.vercel.app/products?limit=${limit}&skip=${skip}`, { cache: 'no-store' });
   
   if (!response.ok) {
-    throw new Error('Failed to fetch products');
+    throw new Error(`HTTP error! Status: ${response.status}`);
   }
 
   const products = await response.json();
