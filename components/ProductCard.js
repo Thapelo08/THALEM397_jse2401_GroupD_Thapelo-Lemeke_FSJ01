@@ -7,7 +7,7 @@ import { useState } from 'react';
 export default function ProductCard({ product }) {
   const [imageError, setImageError] = useState(false);
 
-  // Function to get a valid image source
+  
   const getImageSrc = () => {
     if (!imageError && product.thumbnail) return product.thumbnail;
     if (!imageError && product.images && product.images.length > 0) return product.images[0];
