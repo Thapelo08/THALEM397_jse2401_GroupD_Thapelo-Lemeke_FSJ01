@@ -49,8 +49,7 @@ export default function ProductPage() {
         fetchData();
     }, [paramid]);
 
-    console.log(singleProduct)
-    console.log("images:", singleProduct.images)
+    
    
 
 
@@ -59,7 +58,6 @@ export default function ProductPage() {
 
     const images_image = !imageError && singleProduct.images && singleProduct.images.length >= 0 ? singleProduct.images : ['/placeholder-image.jpg'];
 
-    console.log("currentImage:", images_image[currentImageIndex])
     const nextImage = () => {
         setCurrentImageIndex((prevIndex) => 
             prevIndex === images_image.length - 1 ? 0 : prevIndex + 1 
@@ -95,9 +93,6 @@ export default function ProductPage() {
            ← Back to Products
            </Link>
            <div className="container mx-auto px-4">
-            <Link href="/products" className="btn btn-primary mb-4">
-                Back to Products
-            </Link>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="relative h-96 card">
                     <Image 
