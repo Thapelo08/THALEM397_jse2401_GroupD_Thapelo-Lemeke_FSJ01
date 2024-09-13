@@ -1,10 +1,35 @@
 import "./globals.css";
 
+/**
+ * Metadata for the application, including the title and description.
+ *
+ * @constant
+ * @type {Object}
+ * @property {string} title - The title of the application.
+ * @property {string} description - A brief description of the application.
+ */
 export const metadata = {
   title: "Stylish E-commerce Store",
   description: "A beautiful and modern e-commerce experience",
 };
 
+/**
+ * RootLayout component provides the main layout structure for the application.
+ * It includes a header, a main content area, and a footer.
+ *
+ * @component
+ * @example
+ * return (
+ *   <RootLayout>
+ *     <YourContentHere />
+ *   </RootLayout>
+ * );
+ *
+ * @param {Object} props - The props for the component.
+ * @param {React.ReactNode} props.children - The content to be rendered within the main content area.
+ *
+ * @returns {JSX.Element} The rendered layout component.
+ */
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

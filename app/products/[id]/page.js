@@ -8,22 +8,65 @@ import getProduct from '../../api';
 
 
 
+/**
+ * ProductPage component that displays detailed information about a single product.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <ProductPage />
+ * )
+ */
 export default function ProductPage() {
-    const [singleProduct, setSingleProduct] = useState({})
-    const [error, setError] = useState(null)
-    const [loading, setLoading] = useState(false)
+    /**
+     * State for holding the product details.
+     * @type {Object}
+     */
+    const [singleProduct, setSingleProduct] = useState({});
+
+    /**
+     * State for handling errors during data fetching.
+     * @type {string|null}
+     */
+    const [error, setError] = useState(null);
+
+    /**
+     * State for managing the loading state of the product data.
+     * @type {boolean}
+     */
+    const [loading, setLoading] = useState(false);
+
+    /**
+     * State for managing the index of the currently displayed image.
+     * @type {number}
+     */
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    /**
+     * State for handling image loading errors.
+     * @type {boolean}
+     */
     const [imageError, setImageError] = useState(false);
 
-    const { id } = useParams()
-    const paramid = id
+    /**
+     * Extracts the product ID from the URL parameters.
+     * @type {string}
+     */
+    const { id } = useParams();
+    const paramid = id;
 
+    /**
+     * Fetches the product data when the component mounts or when the product ID changes.
+     */
     useEffect(() => {
         if (!paramid) {
             console.error("ID is missing.");
             return;
         }
-    
+
+        /**
+         * Asynchronously fetches the product data and handles errors.
+         */
         const fetchData = async () => {
             setLoading(true);
             try {
@@ -40,26 +83,37 @@ export default function ProductPage() {
                 setLoading(false);
             }
         };
-    
+
         fetchData();
     }, [paramid]);
 
+    /**
+     * Array of image URLs to display, with a placeholder image if there is an error or no images are available.
+     * @type {string[]}
+     */
     const images = !imageError && singleProduct.images && singleProduct.images.length > 0 
         ? singleProduct.images 
         : ['/placeholder-image.jpg'];
 
+    /**
+     * Advances to the next image in the image array.
+     */
     const nextImage = () => {
         setCurrentImageIndex((prevIndex) => 
             prevIndex === images.length - 1 ? 0 : prevIndex + 1 
         );
     };
 
+    /**
+     * Moves to the previous image in the image array.
+     */
     const prevImage = () => {
         setCurrentImageIndex((prevIndex) => 
             prevIndex === 0 ? images.length - 1 : prevIndex - 1 
         );
     };
 
+    // Render error state
     if (error) {
         return (
             <div className="container mx-auto px-4 py-8">
@@ -69,23 +123,25 @@ export default function ProductPage() {
                     Back to Products
                 </Link>
             </div>
-        )
+        );
     }
 
+    // Render loading state
     if (loading) {
         return (
             <div className="container mx-auto px-4 py-8">
                 <p className="text-gray-600 dark:text-gray-300">Loading product details...</p>
             </div>
-        )
+        );
     }
 
+    // Render product details
     return ( 
         <div className="container mx-auto px-4 py-8">
-           <Link href="/" className="inline-block bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition-colors duration-200 mb-8">
-           ← Back to Products
-           </Link>
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <Link href="/" className="inline-block bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition-colors duration-200 mb-8">
+                ← Back to Products
+            </Link>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="relative h-96 bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
                     <Image 
                         src={images[currentImageIndex]} 

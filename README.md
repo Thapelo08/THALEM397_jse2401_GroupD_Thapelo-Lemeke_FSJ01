@@ -2,7 +2,7 @@
 
 # Introduction
 
-- Welcome to Project Name, an e-commerce web application built using modern web technologies to provide users with a seamless shopping experience. The application allows users to browse products, view detailed product information, add items to their cart, compare products, and manage purchases with a user-friendly interface.
+- Welcome to Stylish store , an e-commerce web application built using modern web technologies to provide users with a seamless shopping experience. The application allows users to browse products, view detailed product information, add items to their cart, compare products, and manage purchases with a user-friendly interface.
 
 The project is designed to demonstrate the implementation of core e-commerce features like product listings, dynamic routing, persistent shopping cart, and user authentication using state-of-the-art tools and frameworks like Next.js and Supabase
 
