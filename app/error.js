@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+'use client';
 /**
  * Error component displayed when an error occurs during data fetching or other operations.
  *
